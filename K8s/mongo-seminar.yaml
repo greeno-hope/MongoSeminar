@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-seminar-app
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: mongo-seminar-app
+  template:
+    metadata:
+      labels:
+        app: mongo-seminar-app
+    spec:
+      containers:
+        - name: mongo-seminar-app
+          image: greenohope/seminar-app:latest
+          ports:
+            - containerPort: 8082
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8082
+            initialDelaySeconds: 5
+            periodSeconds: 30
+
