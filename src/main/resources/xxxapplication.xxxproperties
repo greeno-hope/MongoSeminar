@@ -1,0 +1,2 @@
+
+spring.data.mongodb.uri=mongodb://10.255.200.51:27017/MarksProductDB

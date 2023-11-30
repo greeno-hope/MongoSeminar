@@ -1,0 +1,22 @@
+# This is a systemd service unit file for the MongoSeminar service.
+# It needs to be deployed into /etc/systemd/system
+
+[Unit]
+# Description is a human-readable description of the service.
+Description=MoodleSeminar Service
+# After specifies that the service should start after the network is up.
+After=network.target
+
+[Service]
+# WorkingDirectory is the directory where the thing.jar file is located.
+# I've deployed a jar file into /usr/share/seminar-app
+WorkingDirectory=/usr/share/seminar-app
+# ExecStart is the command to start the Java application.
+ExecStart=/usr/bin/java -Dspring.profiles.active=deploy -jar MoodleSeminar.jar
+# SuccessExitStatus is the exit status that indicates successful termination.
+SuccessExitStatus=143
+
+[Install]
+# WantedBy specifies the target multi-user.target, meaning the service should start on boot.
+WantedBy=multi-user.target
+
