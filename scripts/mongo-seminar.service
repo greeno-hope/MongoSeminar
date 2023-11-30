@@ -12,7 +12,7 @@ After=network.target
 # I've deployed a jar file into /usr/share/seminar-app
 WorkingDirectory=/usr/share/seminar-app
 # ExecStart is the command to start the Java application.
-ExecStart=/usr/bin/java -Dspring.profiles.active=deploy -jar MoodleSeminar.jar
+ExecStart=/usr/bin/java -Dspring.profiles.active=deploy -jar MongoSeminar.jar
 # SuccessExitStatus is the exit status that indicates successful termination.
 SuccessExitStatus=143
 
